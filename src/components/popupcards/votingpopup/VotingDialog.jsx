@@ -32,7 +32,7 @@ const VotingDialog = ({
       setError(null);
 
       await axios.post(
-        `http://localhost:8000/api/channels/${channelId}/submissions/${submissionId}/voting_marks/`,
+        `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/submissions/${submissionId}/voting_marks/`,
         {
           marks: rating,
           submission_id: submissionId,

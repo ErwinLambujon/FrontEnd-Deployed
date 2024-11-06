@@ -16,10 +16,13 @@ const useAuth = () => {
         password: user.password,
       });*/
 
-      let response = await axios.post("http://localhost:8000/api/user/login/", {
-        email: user.email,
-        password: user.password,
-      });
+      let response = await axios.post(
+        "https://babyjoy456.pythonanywhere.com/api/user/login/",
+        {
+          email: user.email,
+          password: user.password,
+        }
+      );
 
       if (response.status === 200) {
         localStorage.setItem("token", response.data.token);
@@ -40,7 +43,7 @@ const useAuth = () => {
       let token = localStorage.getItem("token");
 
       await axios.post(
-        "http://localhost:8000/api/user/logout/",
+        "https://babyjoy456.pythonanywhere.com/api/user/logout/",
         {},
         {
           headers: { Authorization: `Token ${token}` },
@@ -49,7 +52,6 @@ const useAuth = () => {
 
       localStorage.removeItem("token");
       sessionStorage.clear();
-  
 
       navigate("/login", { replace: true });
     } catch (err) {

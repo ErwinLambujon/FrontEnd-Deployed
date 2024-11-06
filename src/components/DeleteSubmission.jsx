@@ -35,7 +35,9 @@ const DeleteSubmission = ({ submissionId, channelId, onDelete, onClose }) => {
   }, [submissionId, channelId]);
 
   const axiosInstance = axios.create({
-    baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000",
+    baseURL:
+      process.env.NEXT_PUBLIC_API_URL ||
+      "https://babyjoy456.pythonanywhere.com/",
     headers: {
       Authorization: `Token ${localStorage.getItem("token")}`,
       "Content-Type": "application/json",

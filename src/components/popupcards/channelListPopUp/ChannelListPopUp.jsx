@@ -30,12 +30,12 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
 
       try {
         const response = await axios.get(
-          `http://localhost:8000/api/rooms/${roomId}/channels`,
+          `https://babyjoy456.pythonanywhere.com/api/rooms/${roomId}/channels`,
           {
             headers: {
               Authorization: `Token ${token}`,
             },
-          } 
+          }
         );
         setChannels(response.data);
       } catch (error) {
@@ -54,11 +54,14 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
     let token = localStorage.getItem("token");
 
     try {
-      await axios.delete(`http://localhost:8000/api/channels/${channelId}`, {
-        headers: {
-          Authorization: `Token ${token}`,
-        },
-      });
+      await axios.delete(
+        `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}`,
+        {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        }
+      );
 
       setChannels((prevChannels) =>
         prevChannels.filter((channel) => channel.id !== channelId)
@@ -75,7 +78,7 @@ const ChannelListPopup = ({ open, onClose, roomId, user }) => {
 
   const handleChannelClick = (channelId) => {
     navigate(`/roompage/${roomId}/channel/${channelId}`);
-    onClose(); 
+    onClose();
   };
 
   const handleAddChannel = () => {

@@ -179,7 +179,7 @@ function Venn() {
 			setIsLoading((prev) => !prev);
 			let token = localStorage.getItem("token");
 			let response = await axios.post(
-				"http://localhost:8000/api/ai/two_venn/",
+				"https://babyjoy456.pythonanywhere.com/api/ai/two_venn/",
 				{
 					...groupLabel,
 				},
@@ -210,7 +210,7 @@ function Venn() {
 				}
 				// alert("HERE");
 				let two_response = await axios.post(
-					"http://localhost:8000/api/ai/two_venn/",
+					"https://babyjoy456.pythonanywhere.com/api/ai/two_venn/",
 					{
 						...textFields,
 					},
@@ -229,7 +229,7 @@ function Venn() {
 					return;
 				}
 				let three_response = await axios.post(
-					"http://localhost:8000/api/ai/three_venn/",
+					"https://babyjoy456.pythonanywhere.com/api/ai/three_venn/",
 					{
 						...textFields,
 					},
@@ -261,7 +261,7 @@ function Venn() {
 		try {
 			if (selectedButton === 2) {
 				response = await axios.post(
-					"http://localhost:8000/api/two_venn_ps/",
+					"https://babyjoy456.pythonanywhere.com/api/two_venn_ps/",
 					{
 						venn: { ...textFields },
 						statement: text,
@@ -274,7 +274,7 @@ function Venn() {
 				console.log(hasCheckedCheckBox);
 				if (hasCheckedCheckBox) {
 					response = await axios.post(
-						"http://localhost:8000/api/two_venn_ps/",
+						"https://babyjoy456.pythonanywhere.com/api/two_venn_ps/",
 						{
 							venn: { ...groupLabel },
 							statement: text,
@@ -287,7 +287,7 @@ function Venn() {
 				} else {
 					alert("PASOK");
 					response = await axios.post(
-						"http://localhost:8000/api/three_venn_ps/",
+						"https://babyjoy456.pythonanywhere.com/api/three_venn_ps/",
 						{
 							venn: { ...textFields },
 							statement: text,

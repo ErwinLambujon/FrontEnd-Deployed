@@ -47,7 +47,7 @@ const ChannelPage = () => {
 
       // Get all submissions
       const submissionsResponse = await axios.get(
-        `http://localhost:8000/api/channels/${channelId}/submissions/`,
+        `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/submissions/`,
         { headers }
       );
 
@@ -56,7 +56,7 @@ const ChannelPage = () => {
         submissionsResponse.data.map(async (submission) => {
           try {
             const votesResponse = await axios.get(
-              `http://localhost:8000/api/channels/${channelId}/submissions/${submission.id}/voting_marks/`,
+              `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/submissions/${submission.id}/voting_marks/`,
               { headers }
             );
 
@@ -167,7 +167,7 @@ const ChannelPage = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8000/api/channels/${channelId}/`,
+          `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/`,
           {
             headers: {
               Authorization: `Token ${token}`,
@@ -184,7 +184,7 @@ const ChannelPage = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `http://localhost:8000/api/channels/${channelId}/submissions/`,
+          `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/submissions/`,
           {
             headers: {
               Authorization: `Token ${token}`,

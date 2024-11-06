@@ -48,13 +48,16 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:8000/api/user/", {
-        email: userData.email,
-        first_name: userData.first_name,
-        last_name: userData.last_name,
-        password: userData.password,
-        user_type: userData.user_type,
-      });
+      const response = await axios.post(
+        "https://babyjoy456.pythonanywhere.com/api/user/",
+        {
+          email: userData.email,
+          first_name: userData.first_name,
+          last_name: userData.last_name,
+          password: userData.password,
+          user_type: userData.user_type,
+        }
+      );
 
       if (response.status === 201) {
         alert("User created successfully!");
@@ -66,7 +69,7 @@ const Register = () => {
           confirmPassword: "",
           user_type: "STUDENT",
         });
-        navigate("/login"); 
+        navigate("/login");
       }
     } catch (err) {
       console.error(err);
