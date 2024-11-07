@@ -21,17 +21,7 @@ import { pdfjs } from "react-pdf";
 import DeleteSubmission from "../components/DeleteSubmission";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
 
-const baseUrl = new URL(import.meta.url);
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.mjs",
-  import.meta.url
-).toString();
-
-pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
-  "https://front-end-deployed-6cjrdxglc-erwinlambujons-projects.vercel.app/static/media/pdf.worker.min.mjs",
-  baseUrl
-).toString();
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const PostCard = ({
   author,
