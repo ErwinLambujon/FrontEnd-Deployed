@@ -21,7 +21,7 @@ import { pdfjs } from "react-pdf";
 import DeleteSubmission from "../components/DeleteSubmission";
 import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
 
-const baseUrl = new URL(window.location.origin);
+const baseUrl = new URL(import.meta.url);
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
