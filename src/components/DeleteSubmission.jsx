@@ -18,22 +18,6 @@ const DeleteSubmission = ({ submissionId, channelId, onDelete, onClose }) => {
   const [error, setError] = useState(null);
   const [debugInfo, setDebugInfo] = useState(null);
 
-  useEffect(() => {
-    const debug = {
-      submissionId,
-      channelId,
-      submissionIdType: typeof submissionId,
-      channelIdType: typeof channelId,
-      timestamp: new Date().toISOString(),
-    };
-
-    setDebugInfo(debug);
-
-    if (!submissionId || !channelId) {
-      console.warn("DeleteSubmission: Missing or invalid props", debug);
-    }
-  }, [submissionId, channelId]);
-
   const axiosInstance = axios.create({
     baseURL:
       process.env.NEXT_PUBLIC_API_URL ||
@@ -139,20 +123,6 @@ const DeleteSubmission = ({ submissionId, channelId, onDelete, onClose }) => {
             <Alert severity="error" sx={{ mt: 2 }}>
               {error}
             </Alert>
-          )}
-
-          {process.env.NODE_ENV === "development" && (
-            <pre
-              style={{
-                marginTop: "1rem",
-                padding: "0.5rem",
-                background: "#f5f5f5",
-                borderRadius: "4px",
-                fontSize: "0.75rem",
-              }}
-            >
-              {JSON.stringify(debugInfo, null, 2)}
-            </pre>
           )}
         </DialogContent>
         <DialogActions>

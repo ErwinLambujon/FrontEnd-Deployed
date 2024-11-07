@@ -32,7 +32,7 @@ const UploadPSPopup = ({ channelId, onClose }) => {
     try {
       let token = localStorage.getItem("token");
       const response = await axios.post(
-        `http://localhost:8000/api/channels/${channelId}/submissions/submit/`,
+        `https://babyjoy456.pythonanywhere.com/api/channels/${channelId}/submissions/submit/`,
         formData,
         {
           headers: {
@@ -65,7 +65,6 @@ const UploadPSPopup = ({ channelId, onClose }) => {
     }
   };
 
-  // Add logging to file selection
   const handleSelectedFile = (e) => {
     const file = e.target.files[0];
     console.log("Selected file:", {

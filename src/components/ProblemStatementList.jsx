@@ -16,7 +16,6 @@ const ProblemStatementList = (props) => {
           <ProblemStatement key={index}>{statement}</ProblemStatement>
         ))}
       </Box>
-      {/* Move this button to the right */}
       <Button
         variant='contained'
         sx={{

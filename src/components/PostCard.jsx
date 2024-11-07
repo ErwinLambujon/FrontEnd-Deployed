@@ -50,12 +50,20 @@ const PostCard = ({
   const [isDeleting, setIsDeleting] = useState(false);
   const [iserror, setisError] = useState(null);
 
+  const axiosInstance = axios.create({
+    baseURL: "https://babyjoy456.pythonanywhere.com/",
+    headers: {
+      Authorization: `Token ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json",
+    },
+  });
+
   const handleDelete = async () => {
     try {
       setIsDeleting(true);
       iserror(null);
 
-      const url = `/api/channels/${channelId}/submissions/${submittedWork.id}/`;
+      const url = await axiosInstance.get(`/api/channels/${channelId}/submissions/${submittedWork.id}/`);
       const response = await axios.delete(url, {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
@@ -96,14 +104,6 @@ const PostCard = ({
     const displayName = getAuthorDisplayName();
     return displayName.charAt(0) || "U";
   };
-
-  const axiosInstance = axios.create({
-    baseURL: "https://babyjoy456.pythonanywhere.com/",
-    headers: {
-      Authorization: `Token ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json",
-    },
-  });
 
   useEffect(() => {
     const fetchPresignedUrl = async () => {
