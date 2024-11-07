@@ -19,10 +19,18 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 import DeleteSubmission from "../components/DeleteSubmission";
+import * as pdfjsLib from "pdfjs-dist/legacy/build/pdf";
+
+const baseUrl = new URL(window.location.origin);
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
   import.meta.url
+).toString();
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
+  "https://front-end-deployed-6cjrdxglc-erwinlambujons-projects.vercel.app/static/media/pdf.worker.min.mjs",
+  baseUrl
 ).toString();
 
 const PostCard = ({
@@ -63,7 +71,9 @@ const PostCard = ({
       setIsDeleting(true);
       iserror(null);
 
-      const url = await axiosInstance.get(`/api/channels/${channelId}/submissions/${submittedWork.id}/`);
+      const url = await axiosInstance.get(
+        `/api/channels/${channelId}/submissions/${submittedWork.id}/`
+      );
       const response = await axios.delete(url, {
         headers: {
           Authorization: `Token ${localStorage.getItem("token")}`,
